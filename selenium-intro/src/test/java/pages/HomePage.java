@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.valueOf;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeThat;
 import static utils.StringUtils.getStringsFromWebElements;
 
 /**
@@ -18,6 +20,7 @@ import static utils.StringUtils.getStringsFromWebElements;
  */
 public class HomePage extends PageBase {
 
+    protected Header header;
     @FindBy(id = "citiesInput")
     private WebElement locationInput;
     @FindBy(className = "eac-item")
@@ -28,9 +31,12 @@ public class HomePage extends PageBase {
     private WebElement checkOutInput;
     @FindBy(id = "child")
     private WebElement childrenSelection;
+    @FindBy(xpath = "//div[@id='ages' and contains(@style, 'display: block;')]//select[contains(@class, 'room-child-age')]")
+    private List<WebElement> childrenAgeSelectorList;
+    @FindBy(xpath = "//div[@id='ages' and contains(@style, 'display: block;')]//button[text()='Done']")
+    private WebElement childrenModalDoneButton;
     @FindBy(xpath = "//button[text()=' Search']")
     private WebElement searchButton;
-
     @FindBy(xpath = "//h2[text()=' Featured Tours        ']/../following-sibling::div//a")
     private List<WebElement> featuredToursList;
     @FindBy(xpath = "//h2[contains(text(), 'Blog News')]/../following-sibling::div//h4")
@@ -38,32 +44,46 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//a[contains(text(), 'Read More')]")
     private List<WebElement> readMoreButtons;
 
-    protected Header header;
-
     public HomePage(WebDriver driver) {
         super(driver);
         header = new Header(driver);
     }
 
-    public HotelListPage searchFor(String location, String checkInDate, String checkoutDate, int numberOfChilren) throws InterruptedException {
-        fillInField(locationInput, location);
-        List<String> suggestions = getSuggestions();
-        if (suggestions.size() > 0 )
-            suggestionsList.get(0).click();
+    public HotelListPage searchFor(String location, String checkInDate, String checkoutDate, int numberOfChilren,
+                                   List<Integer> ages) {
+        enterLocation(location);
         fillInField(checkInInput, checkInDate);
         fillInField(checkOutInput, checkoutDate);
-        new Select(childrenSelection).selectByVisibleText(valueOf(numberOfChilren));
+        selectChildren(numberOfChilren, ages);
 
-        //
-
+        waitForElementToBeVisible(searchButton);
         searchButton.click();
 
         return new HotelListPage(driver);
     }
 
-    public List<String> getSuggestions() throws InterruptedException {
-        Thread.sleep(500);
-        if(isElementsListDisplayed(suggestionsList))
+    private void selectChildren(int numberOfChildren, List<Integer> ages) {
+        assumeThat("Number of ages entered (" + ages.size() + ") did not match number of children (" + numberOfChildren + ").",
+                ages.size(), is(numberOfChildren));
+
+        new Select(childrenSelection).selectByVisibleText(valueOf(numberOfChildren));
+        if (numberOfChildren > 0) {
+            waitForElementsToBeVisible(childrenAgeSelectorList);
+            for (WebElement selector : childrenAgeSelectorList)
+                new Select(selector).selectByVisibleText(valueOf(ages.get(childrenAgeSelectorList.indexOf(selector))));
+            childrenModalDoneButton.click();
+        }
+    }
+
+    public void enterLocation(String location) {
+        fillInField(locationInput, location);
+        List<String> suggestions = getSuggestions();
+        if (suggestions.size() > 0)
+            suggestionsList.get(0).click();
+    }
+
+    public List<String> getSuggestions() {
+        if (isElementsListDisplayed(suggestionsList))
             return getStringsFromWebElements(suggestionsList);
         return new ArrayList<String>();
     }

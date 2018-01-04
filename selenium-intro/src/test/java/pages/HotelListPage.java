@@ -21,6 +21,7 @@ public class HotelListPage extends PageBase {
 
     public HotelListPage(WebDriver driver) {
         super(driver);
+        waitForURLToContain("properties");
     }
 
     public HotelListPage selectRating(int rating) {
@@ -49,8 +50,9 @@ public class HotelListPage extends PageBase {
 
     public List<String> getResultsLocation() {
         List<String> locations = new ArrayList<String>();
-        for (WebElement location : resultsLocationList)
-            locations.add(location.getAttribute("title"));
+        if (isElementsListDisplayed(resultsLocationList))
+            for (WebElement location : resultsLocationList)
+                locations.add(location.getAttribute("title"));
 
         return locations;
     }

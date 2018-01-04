@@ -7,9 +7,7 @@ import pages.SignUpPage;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
-import static utils.LoginUtils.HOME_PAGE_URL;
-import static utils.LoginUtils.TEST_PASSWORD;
-import static utils.LoginUtils.TEST_USERNAME;
+import static utils.LoginUtils.*;
 import static utils.StringUtils.getRandomEmailAddress;
 
 /**

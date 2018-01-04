@@ -9,9 +9,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
-import static utils.LoginUtils.HOME_PAGE_URL;
-import static utils.LoginUtils.TEST_PASSWORD;
-import static utils.LoginUtils.TEST_USERNAME;
+import static utils.LoginUtils.*;
 
 /**
  * Created by Ale on 09/08/17.
