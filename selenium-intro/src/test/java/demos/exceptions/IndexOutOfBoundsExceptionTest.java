@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static utils.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.
@@ -24,7 +25,7 @@ public class IndexOutOfBoundsExceptionTest extends TestBase {
 
     @Test
     public void canCheckFifthErrorMessage() throws Exception {
-        driver.get("http://www.phptravels.net/register");
+        driver.get(HOME_PAGE_URL + "register");
         SignUpPage signUpPage = new SignUpPage(driver);
         signUpPage.fillInFirstName("John");
         signUpPage.clickSignUp();

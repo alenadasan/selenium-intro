@@ -9,6 +9,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
+import static utils.LoginUtils.HOME_PAGE_URL;
 import static utils.LoginUtils.TEST_PASSWORD;
 import static utils.LoginUtils.TEST_USERNAME;
 
@@ -21,7 +22,7 @@ public class WishListTest extends TestBase {
 
     @Before
     public void setUp() {
-        driver.get("http://www.phptravels.net/login");
+        driver.get(HOME_PAGE_URL + "login");
         LoginPage loginPage = new LoginPage(driver);
         accountPage = loginPage.loginAs(TEST_USERNAME, TEST_PASSWORD);
     }

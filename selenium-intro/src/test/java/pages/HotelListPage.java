@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -13,6 +14,8 @@ import static org.junit.Assert.fail;
  */
 public class HotelListPage extends PageBase {
 
+    @FindBy(xpath = "//i[contains(@class, 'icon-location-6')]/..")
+    private List<WebElement> resultsLocationList;
     @FindBy(xpath = "//div[@class='rating']//ins")
     private List<WebElement> hotelRatingSelectionItems;
 
@@ -42,5 +45,13 @@ public class HotelListPage extends PageBase {
         }
 
         return new HotelListPage(driver);
+    }
+
+    public List<String> getResultsLocation() {
+        List<String> locations = new ArrayList<String>();
+        for (WebElement location : resultsLocationList)
+            locations.add(location.getAttribute("title"));
+
+        return locations;
     }
 }

@@ -4,6 +4,8 @@ import org.junit.Test;
 import pages.LoginPage;
 import tests.TestBase;
 
+import static utils.LoginUtils.HOME_PAGE_URL;
+
 /**
  * Created by Ale on 07/08/17.
  */
@@ -11,7 +13,7 @@ public class NoSuchElementExceptionTest extends TestBase {
 
     @Test
     public void canFillInPasswordField() throws Exception {
-        driver.get("http://www.phptravels.net/register/");
+        driver.get(HOME_PAGE_URL + "register/");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLogin();
     }

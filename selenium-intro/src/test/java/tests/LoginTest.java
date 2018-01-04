@@ -25,7 +25,7 @@ public class LoginTest extends TestBase {
 
     @Before
     public void setUp() {
-        driver.get("http://www.phptravels.net/login/");
+        driver.get(HOME_PAGE_URL + "login/");
         loginPage = new LoginPage(driver);
     }
 

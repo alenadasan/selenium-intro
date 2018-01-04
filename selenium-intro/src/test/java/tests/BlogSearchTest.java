@@ -10,6 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
+import static utils.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 02/08/17.
@@ -20,7 +21,7 @@ public class BlogSearchTest extends TestBase {
 
     @Before
     public void setUp() {
-        driver.get("http://www.phptravels.net/blog/");
+        driver.get(HOME_PAGE_URL + "blog/");
         blogPage = new BlogListPage(driver);
     }
 

@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static utils.LoginUtils.HOME_PAGE_URL;
+
 /**
  * Created by Ale on 07/08/17.
  */
@@ -14,7 +16,7 @@ public class NullPointerExceptionTest {
 
     @Test
     public void canNavigateToLoginPage() throws Exception {
-        driver.get("http://www.phptravels.net/login/");
+        driver.get(HOME_PAGE_URL + "login/");
     }
 
     @Test

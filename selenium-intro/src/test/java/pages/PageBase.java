@@ -47,4 +47,19 @@ public class PageBase {
             return false;
         }
     }
+
+    public boolean isElementsListDisplayed(List<WebElement> elements) {
+        try {
+            waitForElementsToBeVisible(elements);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public void fillInField(WebElement field, String value) {
+        waitForElementToBeVisible(field);
+        field.clear();
+        field.sendKeys(value);
+    }
 }

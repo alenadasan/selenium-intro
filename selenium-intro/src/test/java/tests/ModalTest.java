@@ -9,6 +9,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+import static utils.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 25/08/17.
@@ -16,7 +17,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 public class ModalTest extends TestBase { //TODO
     @Test
     public void canSeeDiscountContactNumber() throws Exception {
-        driver.get("http://www.phptravels.net/offers/Lunch-Discount");
+        driver.get(HOME_PAGE_URL + "offers/Lunch-Discount");
 
         WebElement callButton = driver.findElement(By.linkText("Call Now"));
         WebElement phoneNumberLabel = driver.findElement(By.xpath("//i[contains(@class, 'fa-phone')]/.."));
