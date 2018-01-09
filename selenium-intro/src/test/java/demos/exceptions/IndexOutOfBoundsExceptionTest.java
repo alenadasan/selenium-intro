@@ -1,7 +1,7 @@
 package demos.exceptions;
 
 import org.junit.Test;
-import pages.SignUpPage;
+import pages.phptravels.SignUpPage;
 import tests.TestBase;
 
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static utils.LoginUtils.HOME_PAGE_URL;
+import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.

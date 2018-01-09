@@ -1,13 +1,14 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Before;
 import org.junit.Test;
-import pages.AccountPage;
-import pages.SignUpPage;
+import pages.phptravels.AccountPage;
+import pages.phptravels.SignUpPage;
+import tests.TestBase;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
-import static utils.LoginUtils.*;
+import static utils.phptravels.LoginUtils.*;
 import static utils.StringUtils.getRandomEmailAddress;
 
 /**

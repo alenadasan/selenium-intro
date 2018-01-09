@@ -1,18 +1,19 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.AccountPage;
-import pages.LoginPage;
-import pages.SignUpPage;
+import pages.phptravels.AccountPage;
+import pages.phptravels.LoginPage;
+import pages.phptravels.SignUpPage;
+import tests.TestBase;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
-import static utils.LoginUtils.*;
+import static utils.phptravels.LoginUtils.*;
 import static utils.StringUtils.getRandomEmailAddress;
 
 /**

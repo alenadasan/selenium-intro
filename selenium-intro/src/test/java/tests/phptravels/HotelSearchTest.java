@@ -1,9 +1,10 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Before;
 import org.junit.Test;
-import pages.HomePage;
-import pages.HotelListPage;
+import pages.phptravels.HomePage;
+import pages.phptravels.HotelListPage;
+import tests.TestBase;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.Every.everyItem;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static utils.LoginUtils.HOME_PAGE_URL;
+import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 04/01/18.

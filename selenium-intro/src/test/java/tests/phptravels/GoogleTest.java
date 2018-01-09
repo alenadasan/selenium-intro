@@ -1,4 +1,4 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;

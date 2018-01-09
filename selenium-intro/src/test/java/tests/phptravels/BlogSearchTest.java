@@ -1,8 +1,9 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Before;
 import org.junit.Test;
-import pages.BlogListPage;
+import pages.phptravels.BlogListPage;
+import tests.TestBase;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
-import static utils.LoginUtils.HOME_PAGE_URL;
+import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 02/08/17.

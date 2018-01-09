@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static utils.LoginUtils.HOME_PAGE_URL;
+import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.

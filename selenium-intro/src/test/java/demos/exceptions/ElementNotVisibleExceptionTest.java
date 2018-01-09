@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import tests.TestBase;
 
-import static utils.LoginUtils.HOME_PAGE_URL;
+import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.
@@ -12,7 +12,7 @@ import static utils.LoginUtils.HOME_PAGE_URL;
 public class ElementNotVisibleExceptionTest extends TestBase {
 
     @Test
-    public void name() throws Exception {
+    public void test() throws Exception {
         driver.get(HOME_PAGE_URL + "register");
         driver.findElement(By.tagName("div")).click();
     }

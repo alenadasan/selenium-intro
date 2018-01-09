@@ -1,16 +1,17 @@
-package tests;
+package tests.phptravels;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import pages.*;
+import pages.phptravels.*;
+import tests.TestBase;
 
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
-import static utils.LoginUtils.*;
+import static utils.phptravels.LoginUtils.*;
 
 /**
  * Created by Ale on 09/08/17.
