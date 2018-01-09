@@ -1,10 +1,10 @@
-package pages.phptravels;
+package phptravels.pages;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.PageBase;
+import resources.PageBase;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assume.assumeThat;

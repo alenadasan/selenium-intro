@@ -1,11 +1,11 @@
-package pages.phptravels;
+package phptravels.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import pages.PageBase;
+import resources.PageBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import static java.lang.String.valueOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
-import static utils.StringUtils.getStringsFromWebElements;
+import static resources.StringUtils.getStringsFromWebElements;
 
 /**
  * Created by Ale on 09/08/17.

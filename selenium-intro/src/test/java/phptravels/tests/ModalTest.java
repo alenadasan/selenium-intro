@@ -1,16 +1,16 @@
-package tests.phptravels;
+package phptravels.tests;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.TestBase;
+import resources.TestBase;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
+import static phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 25/08/17.

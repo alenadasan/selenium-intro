@@ -1,13 +1,13 @@
-package tests.phptravels;
+package phptravels.tests;
 
 import org.junit.Test;
-import pages.phptravels.BlogDetailsPage;
-import pages.phptravels.HomePage;
-import tests.TestBase;
+import phptravels.pages.BlogDetailsPage;
+import phptravels.pages.HomePage;
+import resources.TestBase;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
+import static phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 23/08/17.

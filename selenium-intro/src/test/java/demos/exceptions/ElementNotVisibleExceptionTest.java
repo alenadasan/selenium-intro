@@ -2,9 +2,9 @@ package demos.exceptions;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import tests.TestBase;
+import resources.TestBase;
 
-import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
+import static phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.

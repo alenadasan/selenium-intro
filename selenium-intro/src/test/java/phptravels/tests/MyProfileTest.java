@@ -1,4 +1,4 @@
-package tests.phptravels;
+package phptravels.tests;
 
 /**
  * Created by Ale on 02/08/17.

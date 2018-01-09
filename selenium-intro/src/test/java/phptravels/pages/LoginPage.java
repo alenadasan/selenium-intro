@@ -1,9 +1,9 @@
-package pages.phptravels;
+package phptravels.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.PageBase;
+import resources.PageBase;
 
 /**
  * Created by Ale on 18/07/17.

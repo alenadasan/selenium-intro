@@ -1,4 +1,4 @@
-package utils.phptravels;
+package phptravels;
 
 /**
  * Created by Ale on 09/08/17.

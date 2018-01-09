@@ -1,10 +1,10 @@
 package demos.exceptions;
 
 import org.junit.Test;
-import pages.phptravels.LoginPage;
-import tests.TestBase;
+import phptravels.pages.LoginPage;
+import resources.TestBase;
 
-import static utils.phptravels.LoginUtils.HOME_PAGE_URL;
+import static phptravels.LoginUtils.HOME_PAGE_URL;
 
 /**
  * Created by Ale on 07/08/17.
