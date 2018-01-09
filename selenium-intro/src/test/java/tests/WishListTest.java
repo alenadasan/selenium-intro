@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import pages.*;
 
@@ -48,5 +49,24 @@ public class WishListTest extends TestBase {
         WishListPage updatedPage = wishListPage.removeHotelFromWishlist(firstHotel);
 
         assertThat(updatedPage.getSavedHotels(), not(hasItem(firstHotel)));
+    }
+
+    @Ignore("//TODO")
+    @Test
+    public void canAddCarToWishlist() {
+        driver.get(HOME_PAGE_URL + "cars");
+        CarsPage carsPage = new CarsPage(driver);
+        carsPage.clickWishlistButton();
+
+        String carTitle = carsPage.getCarTitle();
+
+        driver.get( HOME_PAGE_URL + "account/#wishlist");
+        WishListPage wishListPage = new WishListPage(driver);
+
+        assertThat(wishListPage.getSavedHotels(), hasItem(carTitle));
+
+
+
+
     }
 }
