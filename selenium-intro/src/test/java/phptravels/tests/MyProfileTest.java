@@ -1,5 +1,7 @@
 package phptravels.tests;
 
+import resources.TestBase;
+
 /**
  * Created by Ale on 02/08/17.
  */
