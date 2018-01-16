@@ -35,6 +35,7 @@ public class ContactMessage {
         return message;
     }
 
+
     public static class ContactMessageBuilder {
 
         private SubjectHeading subject;

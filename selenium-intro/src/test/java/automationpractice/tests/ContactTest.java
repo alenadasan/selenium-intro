@@ -2,6 +2,7 @@ package automationpractice.tests;
 
 import automationpractice.builders.ContactMessage.ContactMessageBuilder;
 import automationpractice.pages.ContactPage;
+import automationpractice.pages.HomePage;
 import org.junit.Before;
 import org.junit.Test;
 import resources.TestBase;
@@ -22,8 +23,9 @@ public class ContactTest extends TestBase {
 
     @Before
     public void setUp() {
-        driver.get("http://automationpractice.com/index.php?controller=contact");
-        contactPage = new ContactPage(driver);
+        driver.get("http://automationpractice.com");
+        HomePage homePage = new HomePage(driver);
+        contactPage = homePage.clickContactUs();
     }
 
     @Test

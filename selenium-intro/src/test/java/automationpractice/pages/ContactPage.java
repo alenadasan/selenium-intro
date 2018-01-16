@@ -60,7 +60,6 @@ public class ContactPage extends PageBase {
         return clickSendMessage();
     }
 
-
     private void selectSubject(String subject) {
         new Select(subjectDropdown).selectByVisibleText(subject);
     }
