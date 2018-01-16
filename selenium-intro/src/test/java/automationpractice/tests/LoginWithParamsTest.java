@@ -1,4 +1,4 @@
-package demos;
+package automationpractice.tests;
 
 import automationpractice.pages.AuthenticationPage;
 import org.junit.Before;
@@ -12,42 +12,42 @@ import java.util.Collection;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
-import static phptravels.LoginUtils.TEST_USERNAME;
 
 /**
  * Created by Ale on 15/01/18.
  */
-@RunWith(Parameterized.class)
-public class ParamTest extends TestBase {
+@RunWith(value = Parameterized.class)
+public class LoginWithParamsTest extends TestBase {
+
     private String email;
     private String password;
 
-    private AuthenticationPage loginPage;
+    private AuthenticationPage authPage;
 
-    public ParamTest(String email, String password) {
+    public LoginWithParamsTest(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{index}: Logging in with {0} and {1}")
     public static Collection input() {
-        return Arrays.asList(new Object[][] {{"a@mmm.com", "cucu"}, {"a@mmmmm.com", "cucu"}});
+        return Arrays.asList(new Object[][] {
+                {"invalid@mailnesia.com", "cucu"},
+                {"ale.nadasan@gmail.com", "1234"},
+                {"deletedaccount@mailnesia.com", "1234"}
+        });
     }
 
     @Before
     public void setUp() {
-//        ParamTest paramTest = new ParamTest();
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-
+        authPage = new AuthenticationPage(driver);
     }
 
     @Test
     public void cannotLoginWithInvalidPassword() throws Exception {
-        loginPage.loginAs(TEST_USERNAME, "");
+        AuthenticationPage authPageWithErrors = authPage.loginAndExpectErrors(email, password);
 
-        AuthenticationPage pageWithErrors = new AuthenticationPage(driver);
-
-        assertThat(pageWithErrors.getStatusMesage(), containsString("Invalid email address"));
+        assertThat(authPageWithErrors.getStatusMesage(), containsString("Invalid password"));
     }
-
 }

@@ -32,6 +32,15 @@ public class AuthenticationPage extends PageBase{
         return new AccountPage(driver);
     }
 
+    public AuthenticationPage loginAndExpectErrors(String email, String password) {
+        waitForElementToBeVisible(emailInput);
+        emailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+
+        return new AuthenticationPage(driver);
+    }
+
 
     public String getStatusMesage() {
         waitForElementToBeVisible(statusMessage);
