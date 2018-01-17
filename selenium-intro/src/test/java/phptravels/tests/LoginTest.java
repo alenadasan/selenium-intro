@@ -32,14 +32,14 @@ public class LoginTest extends TestBase {
 
     @Test
     public void canLoginUsingValidCredentials() throws Exception {
-        AccountPage accountPage = loginPage.loginAs(TEST_USERNAME, TEST_PASSWORD);
+        AccountPage accountPage = loginPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
 
-        assertThat(accountPage.getGreetingMessage(), is("Hi, " + TEST_NAME));
+        assertThat(accountPage.getGreetingMessage(), is("Hi, " + TEST_USERNAME));
     }
 
     @Test
     public void cannotLoginWithInvalidPassword() throws Exception {
-        LoginPage pageWithErrors = loginPage.loginAndExpectErrors(TEST_USERNAME, "");
+        LoginPage pageWithErrors = loginPage.loginAndExpectErrors(TEST_EMAIL, "");
 
         assertThat(pageWithErrors.getErrorMessage(), is("Invalid Email or Password"));
     }
@@ -60,12 +60,12 @@ public class LoginTest extends TestBase {
     @Ignore("created just for demo purposes")
     @Test
     public void canLoginUsingValidCredentials_demo() throws InterruptedException {
-        driver.findElement(By.name("username")).sendKeys(TEST_USERNAME);
+        driver.findElement(By.name("username")).sendKeys(TEST_EMAIL);
         driver.findElement(By.name("password")).sendKeys(TEST_PASSWORD);
         driver.findElement(By.xpath("//button[text()='Login']")).click();
 
         new WebDriverWait(driver, 10).until(visibilityOfElementLocated(By.className("RTL")));
 
-        assertThat(driver.findElement(By.className("RTL")).getText(), is("Hi, " + TEST_NAME));
+        assertThat(driver.findElement(By.className("RTL")).getText(), is("Hi, " + TEST_USERNAME));
     }
 }

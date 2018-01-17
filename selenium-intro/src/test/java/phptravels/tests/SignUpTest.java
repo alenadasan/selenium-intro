@@ -49,7 +49,7 @@ public class SignUpTest extends TestBase {
     @Test
     public void cannotSignUpWithAnExistingEmail() {
         SignUpPage signUpWithAnExistingEmail = signUpPage.signUpWithWrongCredentials
-                ("Adina", "Brinda", "0754791974", TEST_USERNAME, TEST_PASSWORD, "demouser");
+                ("Adina", "Brinda", "0754791974", TEST_EMAIL, TEST_PASSWORD, "demouser");
 
         assertThat(signUpWithAnExistingEmail.getErrorMessages(), contains("Email Already Exists."));
     }

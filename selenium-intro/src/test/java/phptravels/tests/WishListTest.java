@@ -24,7 +24,7 @@ public class WishListTest extends TestBase {
     public void setUp() {
         driver.get(HOME_PAGE_URL + "login");
         LoginPage loginPage = new LoginPage(driver);
-        accountPage = loginPage.loginAs(TEST_USERNAME, TEST_PASSWORD);
+        accountPage = loginPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
     }
 
     @Test

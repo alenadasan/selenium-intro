@@ -10,6 +10,7 @@ import resources.TestBase;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static automationpractice.LoginUtils.HOME_PAGE_URL;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
@@ -40,7 +41,7 @@ public class LoginWithParamsTest extends TestBase {
 
     @Before
     public void setUp() {
-        driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+        driver.get(HOME_PAGE_URL + "index.php?controller=authentication&back=my-account");
         authPage = new AuthenticationPage(driver);
     }
 

@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import resources.TestBase;
 
+import static automationpractice.LoginUtils.TEST_USERNAME;
+import static automationpractice.LoginUtils.TEST_PASSWORD;
+import static automationpractice.LoginUtils.TEST_EMAIL;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -24,8 +27,8 @@ public class LoginTest extends TestBase {
 
     @Test
     public void canLoginWithValidCredentials() throws Exception {
-        AccountPage accountPage = authPage.loginAs("ale.nadasan@gmail.com", "12345");
+        AccountPage accountPage = authPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
 
-        assertThat(accountPage.getLoggedInUserName(), is("Ale Nadasan"));
+        assertThat(accountPage.getLoggedInUserName(), is(TEST_USERNAME));
     }
 }

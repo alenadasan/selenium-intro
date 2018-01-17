@@ -13,6 +13,10 @@ public class HomePage extends PageBase{
 
     @FindBy(partialLinkText = "Contact us")
     private WebElement contactUsButton;
+    @FindBy(id = "search_query_top")
+    private WebElement searchField;
+    @FindBy(name = "submit_search")
+    private WebElement searchButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -25,4 +29,12 @@ public class HomePage extends PageBase{
         return new ContactPage(driver);
     }
 
+    public ResultsPage searchFor(String query) {
+        waitForElementToBeVisible(searchField);
+        searchField.clear();
+        searchField.sendKeys(query);
+        searchButton.click();
+
+        return new ResultsPage(driver);
+    }
 }
