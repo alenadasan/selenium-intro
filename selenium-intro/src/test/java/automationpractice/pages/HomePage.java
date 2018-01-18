@@ -9,6 +9,10 @@ import resources.PageBase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeThat;
+
 /**
  * Created by Ale on 15/01/18.
  */
@@ -33,6 +37,9 @@ public class HomePage extends PageBase{
     private List<WebElement> addToCartButtonsForPopularProducts;
     @FindBy(xpath = "//span[@title = 'Continue shopping']")
     private WebElement continueShoppingModalButton;
+
+    @FindBy(xpath = "//section[@id='social_block']//a")
+    private List<WebElement> socialLinks;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -68,6 +75,7 @@ public class HomePage extends PageBase{
 
     public HomePage addAllPopularProductsToCart() {
         waitForElementsToBeVisible(popularProducts);
+        assumeThat(popularProducts.size(), equalTo(addToCartButtonsForPopularProducts.size()));
 
         Actions actions = new Actions(driver);
         for (WebElement product : popularProducts) {
@@ -89,5 +97,22 @@ public class HomePage extends PageBase{
             itemNames.add(product.getAttribute("title"));
 
         return itemNames;
+    }
+
+    public List<String> getSocialLinks() {
+        List<String> links = new ArrayList<String>();
+
+        for (WebElement link : socialLinks)
+            links.add(link.getAttribute("href"));
+
+        return links;
+    }
+
+    public void clickSocialLinkWithIndex(int i) {
+        try {
+            socialLinks.get(i).click();
+        } catch (IndexOutOfBoundsException e) {
+            fail("Social link with index " + i + " not available");
+        }
     }
 }
