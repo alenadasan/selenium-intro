@@ -27,6 +27,16 @@ public class HomePageTest extends TestBase {
     }
 
     @Test
+    public void facebookLinkWorks() {
+        homePage.clickFacebookLink();
+        List<String> windowHandles = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(windowHandles.get(1));
+
+        assertThat(driver.getCurrentUrl(), is("https://www.facebook.com/groups/525066904174158/"));
+    }
+
+
+    @Test
     public void socialLinksWork() throws Exception {
         List<String> expectedUrls = Arrays.asList("https://www.facebook.com/groups/525066904174158/",
                 "https://twitter.com/seleniumfrmwrk",

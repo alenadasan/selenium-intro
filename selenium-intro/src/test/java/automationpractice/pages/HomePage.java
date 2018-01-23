@@ -115,4 +115,9 @@ public class HomePage extends PageBase{
             fail("Social link with index " + i + " not available");
         }
     }
+
+    public void clickFacebookLink() {
+        waitForElementToBeVisible(socialLinks.get(0));
+        socialLinks.get(0).click();
+    }
 }
