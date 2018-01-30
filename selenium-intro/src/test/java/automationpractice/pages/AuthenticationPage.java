@@ -42,7 +42,7 @@ public class AuthenticationPage extends PageBase{
     }
 
 
-    public String getStatusMesage() {
+    public String getStatusMessage() {
         waitForElementToBeVisible(statusMessage);
         return statusMessage.getText();
     }

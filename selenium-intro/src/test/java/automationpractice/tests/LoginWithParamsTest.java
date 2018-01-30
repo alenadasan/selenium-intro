@@ -49,6 +49,6 @@ public class LoginWithParamsTest extends TestBase {
     public void cannotLoginWithInvalidPassword() throws Exception {
         AuthenticationPage authPageWithErrors = authPage.loginAndExpectErrors(email, password);
 
-        assertThat(authPageWithErrors.getStatusMesage(), containsString("Invalid password"));
+        assertThat(authPageWithErrors.getStatusMessage(), containsString("Invalid password"));
     }
 }
