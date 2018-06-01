@@ -12,7 +12,7 @@ import resources.PageBase;
 
 public class AccountPage extends PageBase {
 
-    @FindBy(className = "RTL")
+    @FindBy(xpath = "//h3[@class='RTL']")
     private WebElement pageTitle;
     @FindBy(partialLinkText = "Wishlist")
     private WebElement wishlistLink;

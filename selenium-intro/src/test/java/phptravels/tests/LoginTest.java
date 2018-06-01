@@ -34,12 +34,19 @@ public class LoginTest extends TestBase {
     public void canLoginUsingValidCredentials() throws Exception {
         AccountPage accountPage = loginPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
 
-        assertThat(accountPage.getGreetingMessage(), is("Hi, " + TEST_USERNAME));
+        assertThat(accountPage.getGreetingMessage(), is("Hi, DVhbCERv IlqEZZxz")); //+ TEST_USERNAME));
+    }
+
+    @Test
+    public void cannotLoginWithNoPassword() throws Exception {
+        LoginPage pageWithErrors = loginPage.loginAndExpectErrors(TEST_EMAIL, "");
+
+        assertThat(pageWithErrors.getErrorMessage(), is("Invalid Email or Password"));
     }
 
     @Test
     public void cannotLoginWithInvalidPassword() throws Exception {
-        LoginPage pageWithErrors = loginPage.loginAndExpectErrors(TEST_EMAIL, "");
+        LoginPage pageWithErrors = loginPage.loginAndExpectErrors("testuser@mailnesia.com", "a");
 
         assertThat(pageWithErrors.getErrorMessage(), is("Invalid Email or Password"));
     }

@@ -2,7 +2,8 @@ package resources;
 
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * Created by Ale on 31/07/17.
@@ -10,11 +11,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestBase {
 
-    protected FirefoxDriver driver;
+    protected WebDriver driver;
 
     @Before
     public void baseSetUp() {
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.gecko.driver", "/Users/Ale/workspace/geckodriver"); // Replace path with your own
+        System.setProperty("webdriver.chrome.driver", "/Users/Ale/workspace/chromedriver"); // Replace path with your own
+//        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 

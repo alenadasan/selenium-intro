@@ -39,9 +39,9 @@ public class ContactMessage {
     public static class ContactMessageBuilder {
 
         private SubjectHeading subject;
-        private String email;
-        private String orderReference;
-        private String message;
+        private String email = "";
+        private String orderReference = "";
+        private String message = "";
 
         public ContactMessageBuilder subject(SubjectHeading subject) {
             this.subject = subject;
