@@ -61,12 +61,10 @@ public class WishListTest extends TestBase {
 
         String carTitle = carsPage.getCarTitle();
 
-        driver.get( HOME_PAGE_URL + "account/#wishlist");
+        driver.get(HOME_PAGE_URL + "account/#wishlist");
         WishListPage wishListPage = new WishListPage(driver);
 
         assertThat(wishListPage.getSavedHotels(), hasItem(carTitle));
-
-
 
 
     }

@@ -16,14 +16,14 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
  */
 public class IndexOutOfBoundsExceptionTest extends TestBase {
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void canAccessThirdArrayElement() throws Exception {
         List<String> errorMessages = Arrays.asList("First error", "Second error");
 
         System.out.println(errorMessages.get(2));
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void canCheckFifthErrorMessage() throws Exception {
         driver.get(HOME_PAGE_URL + "register");
         SignUpPage signUpPage = new SignUpPage(driver);

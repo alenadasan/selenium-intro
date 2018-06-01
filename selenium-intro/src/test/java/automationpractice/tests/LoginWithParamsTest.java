@@ -32,7 +32,7 @@ public class LoginWithParamsTest extends TestBase {
 
     @Parameterized.Parameters(name = "{index}: Logging in with {0} and {1}")
     public static Collection input() {
-        return Arrays.asList(new Object[][] {
+        return Arrays.asList(new Object[][]{
                 {"invalid@mailnesia.com", "cucu"},
                 {"ale.nadasan@gmail.com", "1234"},
                 {"deletedaccount@mailnesia.com", "1234"}

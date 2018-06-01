@@ -16,7 +16,7 @@ public class BlogListPage extends PageBase {
     @FindBy(xpath = "//button[text()=' Search']")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//div[@class='panel-body']//h3")
+    @FindBy(xpath = "//div[@class='panel-body']//h4")
     private List<WebElement> results;
     @FindBy(xpath = "//div[text()='Categories and Posts']/following-sibling::a")
     private List<WebElement> categoryLinks;
@@ -57,7 +57,7 @@ public class BlogListPage extends PageBase {
         boolean currentArticleContainsQuery = false;
 
         if (!articleTitle.contains(query)) {
-            WebElement result = driver.findElement(By.xpath("//h3[text()='" + articleTitle + "']"));
+            WebElement result = driver.findElement(By.xpath("//h4[text()='" + articleTitle + "']"));
             result.click();
             BlogDetailsPage detailsPage = new BlogDetailsPage(driver);
             currentArticleContainsQuery = detailsPage.getDescription().contains(query);

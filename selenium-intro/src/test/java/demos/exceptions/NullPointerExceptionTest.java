@@ -2,7 +2,6 @@ package demos.exceptions;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static phptravels.LoginUtils.HOME_PAGE_URL;
 
@@ -11,15 +10,15 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
  */
 public class NullPointerExceptionTest {
 
-    private WebDriver driver = new FirefoxDriver();
+    private WebDriver driver;
     private String str;
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void canNavigateToLoginPage() throws Exception {
         driver.get(HOME_PAGE_URL + "login/");
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void canCallSubstringOnAString() throws Exception {
         System.out.println(str.substring(0, 1));
     }

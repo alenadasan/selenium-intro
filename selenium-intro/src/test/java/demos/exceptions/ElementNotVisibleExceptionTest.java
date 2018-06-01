@@ -11,7 +11,7 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
  */
 public class ElementNotVisibleExceptionTest extends TestBase {
 
-    @Test
+    @Test //TODO
     public void test() throws Exception {
         driver.get(HOME_PAGE_URL + "register");
         driver.findElement(By.tagName("div")).click();

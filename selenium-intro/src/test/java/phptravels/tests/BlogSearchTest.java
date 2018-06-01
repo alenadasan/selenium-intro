@@ -1,6 +1,7 @@
 package phptravels.tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import phptravels.pages.BlogListPage;
 import resources.TestBase;
@@ -49,17 +50,19 @@ public class BlogSearchTest extends TestBase {
                     resultsPage.articleContainsQuery(articleTitle, searchQuery), is(true));
     }
 
+    @Ignore
     @Test //TODO
     public void whenSearchingByDate_noResultsAreDisplayed() throws Exception {
 
     }
 
+    @Ignore
     @Test //TODO
     public void cannotSearchWithEmptySearchField() throws Exception {
 
     }
 
-
+    @Ignore
     @Test
     public void whenEnteringBlog_articlesAreDisplayed() throws Exception {
         assertThat(blogPage.getResults().size(), greaterThan(0));

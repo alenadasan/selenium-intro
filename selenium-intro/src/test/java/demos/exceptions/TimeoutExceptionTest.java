@@ -1,6 +1,7 @@
 package demos.exceptions;
 
 import org.junit.Test;
+import org.openqa.selenium.TimeoutException;
 import phptravels.pages.LoginPage;
 import resources.TestBase;
 
@@ -13,12 +14,11 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
  */
 public class TimeoutExceptionTest extends TestBase {
 
-    @Test
+    @Test(expected = TimeoutException.class)
     public void canCheckErrorMessage() throws Exception {
         driver.get(HOME_PAGE_URL + "login/");
         LoginPage loginPage = new LoginPage(driver);
 
         assertThat(loginPage.getErrorMessage(), is("Doesn't matter, error message not displayed"));
-
     }
 }

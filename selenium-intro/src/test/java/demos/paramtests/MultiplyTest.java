@@ -29,11 +29,11 @@ public class MultiplyTest {
 
     @Parameterized.Parameters(name = "{index}: testMultiply ({0} * {1}) = {2}")
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-            {1, 2, 2},
-            {2, 3, 6},
-            {3, 4, 12},
-            {4, 5, 20}
+        return Arrays.asList(new Object[][]{
+                {1, 2, 2},
+                {2, 3, 6},
+                {3, 4, 12},
+                {4, 5, 20}
         });
     }
 

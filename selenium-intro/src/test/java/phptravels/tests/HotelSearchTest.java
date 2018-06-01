@@ -1,6 +1,7 @@
 package phptravels.tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import phptravels.pages.HomePage;
 import phptravels.pages.HotelListPage;
@@ -19,6 +20,7 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
 /**
  * Created by Ale on 04/01/18.
  */
+@Ignore("interface changes too often to maintain tests")
 public class HotelSearchTest extends TestBase {
 
     private HomePage homePage;

@@ -1,5 +1,6 @@
 package automationpractice.pages;
 
+import automationpractice.pages.checkout.ShoppingCartSummaryPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,6 +10,7 @@ import resources.PageBase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
@@ -16,7 +18,7 @@ import static org.junit.Assume.assumeThat;
 /**
  * Created by Ale on 15/01/18.
  */
-public class HomePage extends PageBase{
+public class HomePage extends PageBase {
 
 
     @FindBy(partialLinkText = "Contact us")
@@ -37,6 +39,8 @@ public class HomePage extends PageBase{
     private List<WebElement> addToCartButtonsForPopularProducts;
     @FindBy(xpath = "//span[@title = 'Continue shopping']")
     private WebElement continueShoppingModalButton;
+    @FindBy(xpath = "//span[contains(text(), 'Proceed to checkout')]")
+    private WebElement proceedToCheckoutButton;
 
     @FindBy(xpath = "//section[@id='social_block']//a")
     private List<WebElement> socialLinks;
@@ -77,17 +81,24 @@ public class HomePage extends PageBase{
         waitForElementsToBeVisible(popularProducts);
         assumeThat(popularProducts.size(), equalTo(addToCartButtonsForPopularProducts.size()));
 
-        Actions actions = new Actions(driver);
         for (WebElement product : popularProducts) {
-            actions.moveToElement(product).perform();
-            waitForElementToBeVisible(addToCartButtonsForPopularProducts.get(popularProducts.indexOf(product)));
-            addToCartButtonsForPopularProducts.get(popularProducts.indexOf(product)).click();
-
+            clickOnPopularProductWithIndex(popularProducts.indexOf(product));
             waitForElementToBeVisible(continueShoppingModalButton);
             continueShoppingModalButton.click();
         }
 
         return new HomePage(driver);
+    }
+
+    public ShoppingCartSummaryPage addToCartAndCheckoutProductWithIndex(int index) {
+        waitForElementsToBeVisible(popularProducts);
+        assumeThat("Product with index " + index + " does not exist", index, lessThan(popularProducts.size()));
+
+        clickOnPopularProductWithIndex(index);
+        waitForElementToBeVisible(proceedToCheckoutButton);
+        proceedToCheckoutButton.click();
+
+        return new ShoppingCartSummaryPage(driver);
     }
 
     public List<String> getPopularItemsNames() {
@@ -119,5 +130,11 @@ public class HomePage extends PageBase{
     public void clickFacebookLink() {
         waitForElementToBeVisible(socialLinks.get(0));
         socialLinks.get(0).click();
+    }
+
+    private void clickOnPopularProductWithIndex(int index) {
+        moveNearElement(popularProducts.get(index));
+        waitForElementToBeVisible(addToCartButtonsForPopularProducts.get(index));
+        addToCartButtonsForPopularProducts.get(index).click();
     }
 }

@@ -52,7 +52,7 @@ public class ContactPage extends PageBase {
 
     public ContactPage sendMessage(ContactMessage contactMessage) {
         if (contactMessage.getSubject() != null)
-                selectSubject(contactMessage.getSubject().getLabel());
+            selectSubject(contactMessage.getSubject().getLabel());
         fillInEmailAddress(contactMessage.getEmail());
         fillInOrderReference(contactMessage.getOrderReference());
         fillInMessage(contactMessage.getMessage());

@@ -1,8 +1,10 @@
 package phptravels.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import resources.PageBase;
 
 /**
@@ -21,7 +23,7 @@ public class LoginPage extends PageBase {
     @FindBy(xpath = "//div[contains(@class, 'alert')]")
     private WebElement errorMessage;
     @FindBy(xpath = "//form[@id='loginfrm']//a[contains(text(), 'Sign Up')]")
-    private WebElement signUpLink;
+    private WebElement signUpButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -58,8 +60,9 @@ public class LoginPage extends PageBase {
     }
 
     public SignUpPage goToSignUpPage() {
-        waitForElementToBeVisible(signUpLink);
-        signUpLink.click();
+        waitForElementToBeVisible(signUpButton);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='loginfrm']//a[contains(text(), 'Sign Up')]")));
+        signUpButton.click();
 
         return new SignUpPage(driver);
     }

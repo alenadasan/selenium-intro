@@ -5,7 +5,7 @@ import phptravels.pages.BlogDetailsPage;
 import phptravels.pages.HomePage;
 import resources.TestBase;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 import static phptravels.LoginUtils.HOME_PAGE_URL;
 
@@ -19,9 +19,9 @@ public class HomePageTest extends TestBase {
         driver.get(HOME_PAGE_URL);
         HomePage homePage = new HomePage(driver);
 
-        String blogPostTitle = homePage.getPostTitleForBlogWithIndex(1);
-        BlogDetailsPage blogDetailsPage = homePage.clickOnBlogArticleWithIndex(1);
+        String blogPostTitle = homePage.getPostTitleForBlogWithIndex(0);
+        BlogDetailsPage blogDetailsPage = homePage.clickOnBlogArticleWithIndex(0);
 
-        assertThat(blogDetailsPage.getPostTitle(), is(blogPostTitle));
+        assertThat(blogDetailsPage.getPostTitle(), containsString(blogPostTitle));
     }
 }

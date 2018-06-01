@@ -2,7 +2,6 @@ package phptravels.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import resources.PageBase;
@@ -40,9 +39,9 @@ public class HomePage extends PageBase {
     private WebElement searchButton;
     @FindBy(xpath = "//h2[text()=' Featured Tours        ']/../following-sibling::div//a")
     private List<WebElement> featuredToursList;
-    @FindBy(xpath = "//h2[contains(text(), 'Blog News')]/../following-sibling::div//h4")
+    @FindBy(xpath = "//div[contains(@class, 'promotions')]//a//strong")
     private List<WebElement> blogArticles;
-    @FindBy(xpath = "//a[contains(text(), 'Read More')]")
+    @FindBy(xpath = "//h4[contains(text(), 'Read More')]")
     private List<WebElement> readMoreButtons;
 
     public HomePage(WebDriver driver) {
@@ -115,16 +114,14 @@ public class HomePage extends PageBase {
         try {
             moveNearElement(blogArticles.get(index));
             waitForElementsToBeVisible(blogArticles);
-            return blogArticles.get(index).getText();
+            String rawTitle = blogArticles.get(index).getText().toUpperCase();
+            if(rawTitle.endsWith("…"))
+                rawTitle = rawTitle.substring(0, rawTitle.length() - 1);
+            return rawTitle;
         } catch (IndexOutOfBoundsException e) {
             fail("Could not find blog article with index " + index);
         }
         return "";
-    }
-
-    public void moveNearElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).build().perform();
     }
 
     public Header getHeader() {

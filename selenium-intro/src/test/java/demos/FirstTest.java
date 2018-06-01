@@ -11,7 +11,7 @@ public class FirstTest {
 
     @Test
     public void canNavigateToAWebsite() {
-        System.setProperty("webdriver.gecko.driver", "/Users/Ale/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/Users/Ale/workspace/geckodriver");
 
         WebDriver driver = new FirefoxDriver();
         driver.get("http://www.google.ro");

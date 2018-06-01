@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import resources.TestBase;
 
-import static automationpractice.LoginUtils.TEST_USERNAME;
-import static automationpractice.LoginUtils.TEST_PASSWORD;
-import static automationpractice.LoginUtils.TEST_EMAIL;
+import static automationpractice.LoginUtils.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 

@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class BlogDetailsPage extends PageBase {
 
-    @FindBy(xpath = "//h2[contains(@class, 'title')]")
+    @FindBy(xpath = "//h3[contains(@class, 'title')]")
     private WebElement title;
-    @FindBy(xpath = "//div[contains(@class, 'RTL')]/h2/following-sibling::p")
+    @FindBy(xpath = "//div[contains(@class, 'RTL')]//p")
     private List<WebElement> descriptionParagraphs;
 
 

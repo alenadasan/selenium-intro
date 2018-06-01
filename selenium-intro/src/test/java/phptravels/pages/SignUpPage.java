@@ -31,6 +31,7 @@ public class SignUpPage extends PageBase {
 
     public SignUpPage(WebDriver driver) {
         super(driver);
+        waitForURLToContain("register");
     }
 
     public AccountPage signUpAs(String firstname, String lastname, String phone, String email,
