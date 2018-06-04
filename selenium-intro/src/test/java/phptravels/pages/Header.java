@@ -12,9 +12,9 @@ public class Header extends PageBase {
 
     @FindBy(className = "logo")
     private WebElement siteLogo;
-    @FindBy(xpath = "(//li[@id='li_myaccount']/a)[1]")
+    @FindBy(xpath = "(//ul[contains(@class, 'navbar-right')]//i[contains(@class, 'icon_set_1_icon-70')])[2]")
     private WebElement userAccountButton;
-    @FindBy(partialLinkText = "Logout")
+    @FindBy(xpath = "(//a[contains(text(), 'Logout')])[2]")
     private WebElement logoutDropDownOption;
     @FindBy(linkText = "Account")
     private WebElement accountLink;

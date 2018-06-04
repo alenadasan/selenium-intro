@@ -3,6 +3,8 @@ package automationpractice.tests;
 import automationpractice.pages.HomePage;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import resources.TestBase;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class HomePageTest extends TestBase {
     public void facebookLinkWorks() {
         homePage.clickFacebookLink();
         List<String> windowHandles = new ArrayList<String>(driver.getWindowHandles());
+        new WebDriverWait(driver, 5).until(ExpectedConditions.numberOfWindowsToBe(2));
         driver.switchTo().window(windowHandles.get(1));
 
         assertThat(driver.getCurrentUrl(), is("https://www.facebook.com/groups/525066904174158/"));

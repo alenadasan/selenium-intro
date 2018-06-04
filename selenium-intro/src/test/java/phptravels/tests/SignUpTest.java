@@ -28,9 +28,9 @@ public class SignUpTest extends TestBase {
     public void canSignUpWithValidCredentials() {
         String emailAddress = getRandomEmailAddress();
         AccountPage accountPage = signUpPage.signUpAs
-                ("Ion", "Pope", "0754791974", emailAddress, "123456", "123456");
+                ("Chi", "Lee", "0799791974", emailAddress, "123456", "123456");
 
-        assertThat(accountPage.getGreetingMessage(), containsString("Hi, Ion Pope"));
+        assertThat(accountPage.getGreetingMessage(), containsString("Hi, Chi Lee"));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class SignUpTest extends TestBase {
     @Test
     public void cannotSignUpWithAnExistingEmail() {
         SignUpPage signUpWithAnExistingEmail = signUpPage.signUpWithWrongCredentials
-                ("Adina", "Brinda", "0754791974", TEST_EMAIL, TEST_PASSWORD, "demouser");
+                ("Chi", "Lee", "0754791974", TEST_EMAIL, TEST_PASSWORD, "demouser");
 
         assertThat(signUpWithAnExistingEmail.getErrorMessages(), contains("Email Already Exists."));
     }
@@ -57,7 +57,7 @@ public class SignUpTest extends TestBase {
     @Test
     public void cannotSignUpWithShortPassword() {
         SignUpPage signUpWithShortPassword = signUpPage.signUpWithWrongCredentials
-                ("Adina", "Brinda", "0754791974", "brindaadina@gmail.com", "1234", "1234");
+                ("Chi", "Lee", "0754791974", "testuser@gmail.com", "1234", "1234");
 
         assertThat(signUpWithShortPassword.getErrorMessages(), contains("The Password field must be at least 6 characters in length."));
     }

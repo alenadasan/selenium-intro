@@ -65,7 +65,5 @@ public class WishListTest extends TestBase {
         WishListPage wishListPage = new WishListPage(driver);
 
         assertThat(wishListPage.getSavedHotels(), hasItem(carTitle));
-
-
     }
 }

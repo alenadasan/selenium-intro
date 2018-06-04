@@ -10,6 +10,7 @@ import phptravels.pages.LoginPage;
 import phptravels.pages.SignUpPage;
 import resources.TestBase;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
@@ -34,7 +35,7 @@ public class LoginTest extends TestBase {
     public void canLoginUsingValidCredentials() throws Exception {
         AccountPage accountPage = loginPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
 
-        assertThat(accountPage.getGreetingMessage(), is("Hi, DVhbCERv IlqEZZxz")); //+ TEST_USERNAME));
+        assertThat(accountPage.getGreetingMessage(), containsString("Hi"));
     }
 
     @Test
