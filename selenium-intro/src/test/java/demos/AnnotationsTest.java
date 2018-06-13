@@ -11,11 +11,6 @@ public class AnnotationsTest extends AnnotationsTestBase {
         System.out.println("Before Class");
     }
 
-    @AfterClass
-    public static void classTearDown() {
-        System.out.println("After Class");
-    }
-
     @Before
     public void setUp() {
         System.out.println("Before Test Method");
@@ -34,5 +29,10 @@ public class AnnotationsTest extends AnnotationsTestBase {
     @After
     public void tearDown() {
         System.out.println("After Test Method");
+    }
+
+    @AfterClass
+    public static void classTearDown() {
+        System.out.println("After Class");
     }
 }

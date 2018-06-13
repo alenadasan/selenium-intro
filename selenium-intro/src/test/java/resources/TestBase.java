@@ -17,8 +17,10 @@ public class TestBase {
     public void baseSetUp() {
         System.setProperty("webdriver.gecko.driver", "/Users/Ale/workspace/geckodriver"); // Replace path with your own
         System.setProperty("webdriver.chrome.driver", "/Users/Ale/workspace/chromedriver"); // Replace path with your own
+
         driver = new FirefoxDriver();
 //        driver = new ChromeDriver();
+
         driver.manage().window().maximize();
     }
 
