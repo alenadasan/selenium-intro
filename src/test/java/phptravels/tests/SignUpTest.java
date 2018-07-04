@@ -1,6 +1,7 @@
 package phptravels.tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import phptravels.pages.AccountPage;
 import phptravels.pages.SignUpPage;
@@ -15,6 +16,7 @@ import static resources.StringUtils.getRandomEmailAddress;
  * Created by Ale on 7/28/2017.
  */
 
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class SignUpTest extends TestBase {
     SignUpPage signUpPage;
 

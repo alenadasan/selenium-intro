@@ -1,5 +1,6 @@
 package phptravels.tests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import phptravels.pages.BlogDetailsPage;
 import phptravels.pages.HomePage;
@@ -12,6 +13,8 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
 /**
  * Created by Ale on 23/08/17.
  */
+
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class HomePageTest extends TestBase {
 
     @Test

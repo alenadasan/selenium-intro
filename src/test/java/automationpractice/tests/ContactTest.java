@@ -25,7 +25,7 @@ public class ContactTest extends TestBase {
     public void setUp() {
         driver.get("http://automationpractice.com");
         HomePage homePage = new HomePage(driver);
-        contactPage = homePage.clickContactUs();
+        contactPage = homePage.getHeader().clickContactUs();
     }
 
     @Test

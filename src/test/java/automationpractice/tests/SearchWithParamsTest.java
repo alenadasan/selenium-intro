@@ -44,7 +44,7 @@ public class SearchWithParamsTest extends TestBase {
 
     @Test
     public void canSearchForExistingItems() throws Exception {
-        ResultsPage resultsPage = homePage.searchFor(query);
+        ResultsPage resultsPage = homePage.getHeader().searchFor(query);
 
         assertThat(resultsPage.getNumberOfResults(), greaterThan(0));
     }

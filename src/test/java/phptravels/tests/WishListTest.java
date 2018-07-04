@@ -16,6 +16,8 @@ import static phptravels.LoginUtils.*;
 /**
  * Created by Ale on 09/08/17.
  */
+
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class WishListTest extends TestBase {
 
     AccountPage accountPage;

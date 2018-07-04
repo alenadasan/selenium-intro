@@ -17,6 +17,8 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
 /**
  * Created by Ale on 02/08/17.
  */
+
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class BlogSearchTest extends TestBase {
 
     private BlogListPage blogPage;

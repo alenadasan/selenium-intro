@@ -20,14 +20,6 @@ import static org.junit.Assume.assumeThat;
  */
 public class HomePage extends PageBase {
 
-
-    @FindBy(partialLinkText = "Contact us")
-    private WebElement contactUsButton;
-    @FindBy(id = "search_query_top")
-    private WebElement searchField;
-    @FindBy(name = "submit_search")
-    private WebElement searchButton;
-
     @FindBy(xpath = "//div[@class='shopping_cart']/a")
     private WebElement cartButton;
     @FindBy(className = "cart_block_product_name")
@@ -45,24 +37,11 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//section[@id='social_block']//a/span")
     private List<WebElement> socialLinks;
 
+    private Header header;
+
     public HomePage(WebDriver driver) {
         super(driver);
-    }
-
-    public ContactPage clickContactUs() {
-        waitForElementToBeVisible(contactUsButton);
-        contactUsButton.click();
-
-        return new ContactPage(driver);
-    }
-
-    public ResultsPage searchFor(String query) {
-        waitForElementToBeVisible(searchField);
-        searchField.clear();
-        searchField.sendKeys(query);
-        searchButton.click();
-
-        return new ResultsPage(driver);
+        header = new Header(driver);
     }
 
     public List<String> getCartItems() {
@@ -137,5 +116,9 @@ public class HomePage extends PageBase {
         moveNearElement(popularProducts.get(index));
         waitForElementToBeVisible(addToCartButtonsForPopularProducts.get(index));
         addToCartButtonsForPopularProducts.get(index).click();
+    }
+
+    public Header getHeader() {
+        return header;
     }
 }

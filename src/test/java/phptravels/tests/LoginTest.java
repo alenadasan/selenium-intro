@@ -23,6 +23,7 @@ import static resources.StringUtils.getRandomEmailAddress;
  * Created by Ale on 18/07/17.
  */
 
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class LoginTest {
 
     private WebDriver driver;

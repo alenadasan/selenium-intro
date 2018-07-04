@@ -10,15 +10,21 @@ import resources.PageBase;
  */
 public class AccountPage extends PageBase {
 
-    @FindBy(xpath = "//a[@class='account']/span")
-    private WebElement accountButton;
+    @FindBy(xpath = "//span[text()='My personal information']")
+    private WebElement myPersonalInformationButton;
 
     public AccountPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getLoggedInUserName() {
-        waitForElementToBeVisible(accountButton);
-        return accountButton.getText();
+    public MyPersonalInformationPage clickMyPersonalInformation() {
+        waitForElementToBeVisible(myPersonalInformationButton);
+        myPersonalInformationButton.click();
+
+        return new MyPersonalInformationPage(driver);
+    }
+
+    public Header getHeader() {
+        return new Header(driver);
     }
 }

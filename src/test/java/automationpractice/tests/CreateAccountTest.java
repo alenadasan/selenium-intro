@@ -1,11 +1,11 @@
 package automationpractice.tests;
 
 import automationpractice.pages.AuthenticationPage;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import resources.TestBase;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class CreateAccountTest extends TestBase {
@@ -22,6 +22,6 @@ public class CreateAccountTest extends TestBase {
     public void cannotCreateNewAccountWithoutEnteringEmailAddress() {
         authPage.clickCreateAccount();
 
-        assertThat(authPage.getError(), Matchers.is("Invalid email address."));
+        assertThat(authPage.getError(), is("Invalid email address."));
     }
 }

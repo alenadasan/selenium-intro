@@ -20,7 +20,8 @@ import static phptravels.LoginUtils.HOME_PAGE_URL;
 /**
  * Created by Ale on 04/01/18.
  */
-@Ignore("interface changes too often to maintain tests")
+
+@Ignore("website interface changes constantly and site is often down, tests no longer maintained")
 public class HotelSearchTest extends TestBase {
 
     private HomePage homePage;

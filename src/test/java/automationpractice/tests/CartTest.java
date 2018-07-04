@@ -17,13 +17,13 @@ public class CartTest extends TestBase {
     private HomePage homePage;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         driver.get(HOME_PAGE_URL);
         homePage = new HomePage(driver);
     }
 
     @Test
-    public void canAddProductsToCart() throws Exception {
+    public void canAddProductsToCart() {
         HomePage updatedHomePage = homePage.addAllPopularProductsToCart();
 
         assertThat(updatedHomePage.getCartItems(), is(updatedHomePage.getPopularItemsNames()));
