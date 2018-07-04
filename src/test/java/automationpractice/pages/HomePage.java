@@ -34,7 +34,7 @@ public class HomePage extends PageBase {
     @FindBy(xpath = "//span[contains(text(), 'Proceed to checkout')]")
     private WebElement proceedToCheckoutButton;
 
-    @FindBy(xpath = "//section[@id='social_block']//a/span")
+    @FindBy(xpath = "//section[@id='social_block']//a")
     private List<WebElement> socialLinks;
 
     private Header header;
