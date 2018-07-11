@@ -33,7 +33,7 @@ public class ContactTest extends TestBase {
         ContactPage confirmationPage = contactPage.sendMessage("Webmaster", getRandomEmailAddress(),
                 "1109", "This is a test");
 
-        assertThat(confirmationPage.getStatusMesage(), is("Your message has been successfully sent to our team."));
+        assertThat("Could not send contact message", confirmationPage.getStatusMesage(), is("Your message has been successfully sent to our team."));
     }
 
     @Test

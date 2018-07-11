@@ -56,7 +56,5 @@ public class HomePageTest extends TestBase {
             driver.close();
             driver.switchTo().window(windowHandles.get(0));
         }
-
-
     }
 }
