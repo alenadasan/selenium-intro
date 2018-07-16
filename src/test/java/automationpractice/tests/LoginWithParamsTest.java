@@ -1,5 +1,6 @@
 package automationpractice.tests;
 
+import automationpractice.pages.AccountPage;
 import automationpractice.pages.AuthenticationPage;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +11,9 @@ import resources.TestBase;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static automationpractice.LoginUtils.HOME_PAGE_URL;
+import static automationpractice.LoginUtils.*;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -46,7 +48,14 @@ public class LoginWithParamsTest extends TestBase {
     }
 
     @Test
-    public void cannotLoginWithInvalidPassword() throws Exception {
+    public void canLoginWithValidCredentials() {
+        AccountPage accountPage = authPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
+
+        assertThat(accountPage.getHeader().getLoggedInUserName(), is(TEST_USERNAME));
+    }
+
+    @Test
+    public void cannotLoginWithInvalidPassword() {
         AuthenticationPage authPageWithErrors = authPage.loginAndExpectErrors(email, password);
 
         assertThat(authPageWithErrors.getStatusMessage(), containsString("Invalid password"));

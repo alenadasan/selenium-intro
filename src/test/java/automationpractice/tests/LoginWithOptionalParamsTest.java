@@ -2,6 +2,7 @@ package automationpractice.tests;
 
 import automationpractice.pages.AccountPage;
 import automationpractice.pages.AuthenticationPage;
+import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith;
 import resources.TestBase;
 
 import static automationpractice.LoginUtils.*;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -40,5 +42,13 @@ public class LoginWithOptionalParamsTest extends TestBase {
         AuthenticationPage authPageWithErrors = authPage.loginAndExpectErrors(email, password);
 
         assertThat(authPageWithErrors.getStatusMessage(), is(expectedError));
+    }
+
+    @Test
+    @FileParameters("src/test/java/resources/JunitParamsTestParameters.csv")
+    public void cannotLoginWithInvalidDataFromCSVFile(String email, String password, String expectedError) {
+        AuthenticationPage authPageWithErrors = authPage.loginAndExpectErrors(email, password);
+
+        assertThat(authPageWithErrors.getStatusMessage(), containsString(expectedError));
     }
 }
