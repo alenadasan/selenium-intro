@@ -2,7 +2,6 @@ package automationpractice.tests;
 
 import automationpractice.pages.AccountPage;
 import automationpractice.pages.AuthenticationPage;
-import automationpractice.pages.MyPersonalInformationPage;
 import org.junit.Before;
 import org.junit.Test;
 import resources.TestBase;
@@ -37,12 +36,4 @@ public class LoginTest extends TestBase {
 
         assertThat(authPageWithErrors.getStatusMessage(), is("There is 1 error\nInvalid password."));
     }
-
-    @Test //TODO: finish up
-    public void test() {
-        AccountPage accountPage = authPage.loginAs(TEST_EMAIL, TEST_PASSWORD);
-        MyPersonalInformationPage myPersonalInformationPage = accountPage.clickMyPersonalInformation();
-        myPersonalInformationPage.goBackToAccountPage();
-    }
-
 }

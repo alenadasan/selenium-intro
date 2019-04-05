@@ -33,13 +33,10 @@ public class FirstTest {
         driver.quit();
     }
 
-    @Test //TODO
+    @Test
     public void canDivTwoNumberTest(){
         BigDecimal div=BigDecimal.valueOf(3/3);
-//        String sdiv=Integer.toString(div);
-//        System.out.println(sdiv);
-//        assertEquals("aaa",sdiv,equalTo(1));
-        assertEquals(div,equalTo(1));
-        //assertThat("aaa",sdiv, is() );
+
+        assertEquals(div, equalTo(1));
     }
 }

@@ -29,6 +29,7 @@ public class AuthenticationPage extends PageBase {
 
     public AuthenticationPage(WebDriver driver) {
         super(driver);
+        waitForURLToContain("authentication");
     }
 
     public AccountPage loginAs(String email, String password) {

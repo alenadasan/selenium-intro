@@ -5,7 +5,7 @@ import org.junit.*;
 /**
  * Created by Ale on 26/07/17.
  */
-public class AnnotationsTest {//extends AnnotationsTestBase {
+public class AnnotationsTest extends AnnotationsTestBase {
     @BeforeClass
     public static void classSetUp() {
         System.out.println("Before Class");

@@ -15,6 +15,7 @@ public class AccountPage extends PageBase {
 
     public AccountPage(WebDriver driver) {
         super(driver);
+        waitForURLToContain("account");
     }
 
     public MyPersonalInformationPage clickMyPersonalInformation() {

@@ -58,7 +58,8 @@ public class HomePage extends PageBase {
 
     public HomePage addAllPopularProductsToCart() {
         waitForElementsToBeVisible(popularProducts);
-        assumeThat(popularProducts.size(), equalTo(addToCartButtonsForPopularProducts.size()));
+        assumeThat("Number of cart items did not match number of popular products",
+                popularProducts.size(), equalTo(addToCartButtonsForPopularProducts.size()));
 
         for (WebElement product : popularProducts) {
             clickOnPopularProductWithIndex(popularProducts.indexOf(product));
