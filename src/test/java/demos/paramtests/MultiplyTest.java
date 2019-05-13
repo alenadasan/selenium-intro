@@ -7,7 +7,6 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static demos.paramtests.MathUtils.multiply;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -38,7 +37,7 @@ public class MultiplyTest {
     }
 
     @Test
-    public void canMultiplyTwoNumbers() throws Exception {
-        assertThat(multiply(a, b), is(p));
+    public void canMultiplyTwoNumbers() {
+        assertThat(a * b, is(p));
     }
 }

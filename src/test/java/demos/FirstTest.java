@@ -34,8 +34,8 @@ public class FirstTest {
     }
 
     @Test
-    public void canDivTwoNumberTest(){
-        BigDecimal div=BigDecimal.valueOf(3/3);
+    public void canDivTwoNumberTest() {
+        BigDecimal div = BigDecimal.valueOf(3 / 3);
 
         assertEquals(div, equalTo(1));
     }

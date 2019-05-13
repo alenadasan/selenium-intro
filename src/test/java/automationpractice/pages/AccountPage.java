@@ -13,9 +13,12 @@ public class AccountPage extends PageBase {
     @FindBy(xpath = "//span[text()='My personal information']")
     private WebElement myPersonalInformationButton;
 
+    private Header header;
+
     public AccountPage(WebDriver driver) {
         super(driver);
         waitForURLToContain("account");
+        header = new Header(driver);
     }
 
     public MyPersonalInformationPage clickMyPersonalInformation() {
@@ -26,6 +29,6 @@ public class AccountPage extends PageBase {
     }
 
     public Header getHeader() {
-        return new Header(driver);
+        return header;
     }
 }
