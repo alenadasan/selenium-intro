@@ -2,58 +2,81 @@ package resources;
 
 import java.sql.*;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 public class MySQLManager {
 
-    private static String userName = "root";
-    private static String password = "root";
-    private static String host = "localhost";
-    private static String port = "8889";
-    private static String dbName = "testdb";
-    private static String query = "select * from trainings;";
+    private final static String dbHost = "localhost";
+    private final static int port = 8889;
+    private final static String dbName = "testdb";
+    private final static String userName = "root";
+    private final static String password = "root";
+
+
+    private Connection conn = null;
 
     public static void main(String[] args) {
-        runInsertIntoTrainings();
-        runQuery(query);
+        MySQLManager manager = new MySQLManager();
+        String selectQuery = "select * from trainings;";
+        String insertQuery = "insert into trainings(name, description) values ('UX', 'A brand new course');";
+        String updateQuery = "update trainings set description='Updated description' where id=2;";
+        String deleteQuery = "delete from trainings where id=4;";
+
+        manager.connectAndRunQuery(selectQuery);
+        manager.connectAndRunQuery(insertQuery);
+        manager.connectAndRunQuery(updateQuery);
+        manager.connectAndRunQuery(deleteQuery);
+        manager.connectAndRunQuery(selectQuery);
     }
 
-    public static void runQuery(String query) {
+    public void connectAndRunQuery(String query) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
+            conn = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":" + port + "/" + dbName +
+                    "?useTimezone=true&serverTimezone=UTC", userName, password);
 
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            runQueryAndPrintResults(query);
 
-            printResults(rs);
-
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public static void runInsertIntoTrainings() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
+    private void runQueryAndPrintResults(String query) throws SQLException {
+        Statement statement = conn.createStatement();
+        QueryType type = getQueryType(query);
 
-            PreparedStatement stmt = con.prepareStatement("insert into trainings values(?,?,?)");
-            stmt.setInt(1, 2);//1 specifies the first parameter in the query
-            stmt.setString(2, "Manual testing");
-            stmt.setString(3, "Intro course");
+        log.print("\nRunning query: " + query + "\n");
 
-            int numberOfUpdatedRows = stmt.executeUpdate();
-            System.out.println(numberOfUpdatedRows + " rows inserted.");
-
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
+        switch (type) {
+            case SELECT:
+                ResultSet rs = statement.executeQuery(query);
+                while (rs.next())
+                    System.out.println(
+                            rs.getInt(1) + "  "
+                                    + rs.getString(2) + "  "
+                                    + rs.getString(3));
+                break;
+            default:
+                PreparedStatement preparedStatement = conn.prepareStatement(query);
+                int numberOfUpdatedRows = preparedStatement.executeUpdate();
+                log.print(numberOfUpdatedRows + " rows " + type.toString().toLowerCase() + "d.");
+                break;
         }
     }
 
-    private static void printResults(ResultSet rs) throws SQLException {
-        while (rs.next())
-            System.out.println(rs.getInt(1) + "  " + rs.getString(2)); //add if more columns
+    private QueryType getQueryType(String query) {
+        return QueryType.valueOf(query.substring(0, query.indexOf(" ")).toUpperCase());
     }
-
 }
+
