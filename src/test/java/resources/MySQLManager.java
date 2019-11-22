@@ -12,7 +12,6 @@ public class MySQLManager {
     private final static String userName = "root";
     private final static String password = "root";
 
-
     private Connection conn = null;
 
     public static void main(String[] args) {

@@ -43,7 +43,7 @@ public class HomePageTest extends TestBase {
         List<String> expectedUrls = Arrays.asList("https://www.facebook.com/groups/525066904174158/",
                 "https://twitter.com/seleniumfrmwrk",
                 "https://www.youtube.com/channel/UCHl59sI3SRjQ-qPcTrgt0tA",
-                "https://plus.google.com/111979135243110831526");
+                "https://accounts.google.com/signin/v2/identifier?passive=1209600&osid=1&continue=https%3A%2F%2Fplus.google.com%2F111979135243110831526%2Fposts&followup=https%3A%2F%2Fplus.google.com%2F111979135243110831526%2Fposts&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
 
         for (int i = 0; i < homePage.getSocialLinks().size(); i++) {
             homePage.clickSocialLinkWithIndex(i);
